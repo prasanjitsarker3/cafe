@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -6,8 +6,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../Authentication/AuthProvider';
 
 const Header = () => {
+    const {user}=useContext(AuthContext)
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -23,8 +25,8 @@ const Header = () => {
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/" >Home</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/about" >About</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="">Blog</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="">Login</Link>
-
+                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link>
+                            <p>{user.name}</p>
                         </Nav>
 
                     </Navbar.Collapse>
