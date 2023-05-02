@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import { FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 
@@ -8,6 +8,9 @@ const Login = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const { userLogin, signWithGoogle } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location?.state?.from?.pathname || '/'
 
     const handleLoginUser = (event) => {
         event.preventDefault();
@@ -27,6 +30,7 @@ const Login = () => {
                 setError('')
                 setSuccess("Successfully Login");
                 form.reset();
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setSuccess('');
@@ -41,6 +45,7 @@ const Login = () => {
                 console.log(loggedUser);
                 setError('')
                 setSuccess("Successfully Login");
+                navigate(from, { replace: true })
             })
             .catch(error => {
                 setError(error.message)
@@ -51,6 +56,7 @@ const Login = () => {
             <Row className='d-flex justify-content-center mt-4'>
                 <Col lg={4} md={6} xs={12} >
                     <Form onSubmit={handleLoginUser} className='text-black fs-6 border px-4 py-4'>
+                        <p className='text-center fs-5 m-0 text-success'>Please Login !</p>
                         <Form.Group
                             className="mb-1" controlId="formGroupEmail">
                             <Form.Label>Email </Form.Label>
@@ -68,14 +74,15 @@ const Login = () => {
                             to='/register' className='text-blue fw-bold'>Register</Link></small></p>
                         <p className='text-center '><small className='text-success'>{success}</small></p>
                         <p className='text-center '><small className='text-danger'>{error}</small></p>
+                        <p className='text-center '>Login With</p>
                         <div className='d-flex justify-content-center gap-3 pb-3'>
-                            <FaGoogle  onClick={handleGoogleSignUp} style={{ fontSize: '30px', cursor:'pointer' }} />
+                            <FaGoogle onClick={handleGoogleSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
                             <FaTwitter style={{ fontSize: '30px' }} />
                             <FaGithub style={{ fontSize: '30px' }} />
                         </div>
                     </Form>
                     <hr className=' border border-2 border-black  mx-4' />
-                    <p>Login With</p>
+                    
 
 
                 </Col>

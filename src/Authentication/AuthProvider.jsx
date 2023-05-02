@@ -7,22 +7,27 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true)
     const userCreate = (email, password) => {
+        setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password);
     }
     const userLogin = (email, password) => {
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password);
     }
     const logOut = () => {
+        setLoading(true)
         return signOut(auth);
     }
     const signWithGoogle = () => {
+        setLoading(true)
         return signInWithPopup(auth, googleProvider);
     }
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            console.log(currentUser);
-            setUser(currentUser)
+            setUser(currentUser);
+            setLoading(false);
         })
         return () => {
             unsubscribe();
@@ -34,6 +39,7 @@ const AuthProvider = ({ children }) => {
         userLogin,
         logOut,
         signWithGoogle,
+        loading
     }
     return (
         <div>

@@ -9,3 +9,10 @@
 .dashHr{
     border: 1px dashed rgb(148, 146, 146);
 }
+
+.color{
+    color: blue;
+}
+.color2{
+    color: black;
+}

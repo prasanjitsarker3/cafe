@@ -7,6 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
+import { NavLink } from 'react-bootstrap';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -17,6 +18,7 @@ const Header = () => {
                 console.log(error.message);
             })
     }
+
     return (
         <div>
             <Navbar bg="light" expand="lg">

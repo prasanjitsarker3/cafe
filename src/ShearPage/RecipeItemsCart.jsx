@@ -10,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const RecipeItemsCart = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false);
-    const { name, image, experience, numberRecipe, like, view, years, id, method, rating, leastRecipe } = recipe;
+    const { name, image, experience, numberRecipe, like, view, years, id, method, rating, leastRecipe,ingrediants } = recipe;
     const handleClick = () => {
         toast.success("Hello")
         setFavorite(true)
@@ -24,17 +24,17 @@ const RecipeItemsCart = ({ recipe }) => {
                     <Card.Text>
                         {method.slice(0, 118)}...
                     </Card.Text>
+                    <p className='fs-6'>Ingrediants: {ingrediants}</p>
                     <div className='d-flex justify-content-between align-items-center'>
                         <Rating
                             style={{ maxWidth: 120 }}
                             value={rating}
                             readOnly
                         />
-                        {/* <Button onClick={handleClick}>Toast</Button> */}
-                        <Button disable={!favorite} onClick={handleClick}>
+                        {/* <Button disable={!favorite} onClick={handleClick}>
                             <p>FAV</p>
-                        </Button>
-                        {/* <p style={{ fontSize: '30px' }}><FaHeart disable={favorite} /></p> */}
+                        </Button> */}
+                        <p disable={favorite} onClick={handleClick} style={{ fontSize: '30px' }}><FaHeart  /></p>
 
                     </div>
                 </Card.Body>

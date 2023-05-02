@@ -5,11 +5,14 @@ import ChefRecipe from "../ShearPage/ChefRecipe";
 import About from "../Page/About/About";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
+import PrivateRoute from "./PrivateRoute";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -30,7 +33,7 @@ const router = createBrowserRouter([
             ,
             {
                 path: 'chef/:id',
-                element: <ChefRecipe></ChefRecipe>,
+                element: <PrivateRoute><ChefRecipe></ChefRecipe></PrivateRoute>,
                 loader: ({ params }) => fetch(`http://localhost:5000/restaurants/${params.id}`)
             }
         ]

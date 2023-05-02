@@ -1,14 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
     const { userCreate } = useContext(AuthContext);
-
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const navigate = useNavigate();
     const handleCreateSignUp = (event) => {
 
         event.preventDefault();
@@ -34,6 +34,7 @@ const Register = () => {
                 setError('');
                 setSuccess("Successfully User");
                 form.reset();
+                navigate('/');
 
             })
             .catch(error => {

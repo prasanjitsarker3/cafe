@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 import CheifCard from '../../ShearPage/CheifCard';
-import { Container } from 'react-bootstrap';
+import { Container, Spinner } from 'react-bootstrap';
 import About from '../About/About';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const Home = () => {
-    const [restaurant, setRestaurant] = useState([])
+    const [restaurant, setRestaurant] = useState([]);
+    const navigation=useNavigate();
+    if(navigation.state==='loading'){
+        return <Spinner animation="border" />
+    }
     useEffect(() => {
         fetch('http://localhost:5000/restaurants')
             .then(res => res.json())
             .then(data => setRestaurant(data))
     }, [])
+    
     return (
         <Container>
             <div className='mb-5'><Banner></Banner></div>
