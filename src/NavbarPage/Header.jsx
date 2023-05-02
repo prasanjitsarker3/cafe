@@ -8,6 +8,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
 import { NavLink } from 'react-bootstrap';
+import "react-tooltip/dist/react-tooltip.css";
+// import "./styles.css";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -36,7 +39,10 @@ const Header = () => {
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="">Blog</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link>
                             {
-                                user && <img src={user?.photoURL} className='rounded-circle' width={'30px'} height={'30px'} alt="" srcset="" />
+                                user && <div>
+                                    <img id="title" src={user?.photoURL} className='rounded-circle' width={'30px'} height={'30px'} alt="" srcset="" />
+                                    <ReactTooltip anchorId='title' place='bottom' content={user?.displayName}> </ReactTooltip>
+                                </div>
                             }
                             {
                                 user ? <Button onClick={handleSignOut} variant='success'>Logout</Button> :
