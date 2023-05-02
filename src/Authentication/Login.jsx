@@ -2,11 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
+import { FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 
 const Login = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const { userLogin } = useContext(AuthContext);
+    const { userLogin, signWithGoogle } = useContext(AuthContext);
 
     const handleLoginUser = (event) => {
         event.preventDefault();
@@ -33,6 +34,18 @@ const Login = () => {
             })
 
     }
+    const handleGoogleSignUp = () => {
+        signWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('')
+                setSuccess("Successfully Login");
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
     return (
         <Container>
             <Row className='d-flex justify-content-center mt-4'>
@@ -55,17 +68,15 @@ const Login = () => {
                             to='/register' className='text-blue fw-bold'>Register</Link></small></p>
                         <p className='text-center '><small className='text-success'>{success}</small></p>
                         <p className='text-center '><small className='text-danger'>{error}</small></p>
-
+                        <div className='d-flex justify-content-center gap-3 pb-3'>
+                            <FaGoogle  onClick={handleGoogleSignUp} style={{ fontSize: '30px', cursor:'pointer' }} />
+                            <FaTwitter style={{ fontSize: '30px' }} />
+                            <FaGithub style={{ fontSize: '30px' }} />
+                        </div>
                     </Form>
                     <hr className=' border border-2 border-black  mx-4' />
-                    {/* <div className='d-flex  gap-2 justify-content-center align-items-center border rounded-4 mx-2 mb-1'>
-                        <img src={facebook} alt="" width={"35px"} srcset="" />
-                        <p className='fs-5 text-white  pt-2'>Continue With Facebook</p>
-                    </div>
-                    <div className='d-flex  gap-2 justify-content-center align-items-center border rounded-4 mx-2 p'>
-                        <img src={google} alt="" width={"33px"} srcset="" />
-                        <p className='fs-5 text-white  pt-2'>Continue With Facebook</p>
-                    </div> */}
+                    <p>Login With</p>
+
 
                 </Col>
             </Row>

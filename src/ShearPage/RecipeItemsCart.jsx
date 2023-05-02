@@ -12,7 +12,8 @@ const RecipeItemsCart = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false);
     const { name, image, experience, numberRecipe, like, view, years, id, method, rating, leastRecipe } = recipe;
     const handleClick = () => {
-       alert("Toast")
+        toast.success("Hello")
+        setFavorite(true)
     }
     return (
         <div className='col col-md-4 col-12 mx-auto'>
@@ -29,8 +30,11 @@ const RecipeItemsCart = ({ recipe }) => {
                             value={rating}
                             readOnly
                         />
-                        <Button onClick={handleClick}>Toast</Button>
-                        {/* <p style={{ fontSize: '30px' }}><FaHeart onClick={handleClick} /></p> */}
+                        {/* <Button onClick={handleClick}>Toast</Button> */}
+                        <Button disable={!favorite} onClick={handleClick}>
+                            <p>FAV</p>
+                        </Button>
+                        {/* <p style={{ fontSize: '30px' }}><FaHeart disable={favorite} /></p> */}
 
                     </div>
                 </Card.Body>
