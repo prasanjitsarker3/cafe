@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from './AuthProvider';
+import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
+    const { userCreate } = useContext(AuthContext);
+
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const handleCreateSignUp = (event) => {
@@ -14,11 +18,34 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         if (!/(?=.*[0-9].*[0-9])/.test(password)) {
-            setError(" Ensure string has two digits")
+            return setError(" Ensure string has two digits")
         }
+
         else if (password.length < 6) {
-            setError("Ensure Password length is 6");
+            return setError("Ensure Password length is 6");
         }
+        setError('')
+        setSuccess('')
+        userCreate(email, password)
+            .then(result => {
+                const loggedUser = result.user;
+                updateUserInfo(loggedUser, name, photo)
+                console.log(loggedUser);
+                setError('');
+                setSuccess("Successfully User");
+                form.reset();
+
+            })
+            .catch(error => {
+                setSuccess('')
+                setError(error.message);
+            })
+    }
+
+    const updateUserInfo = (currentUser, name, photo) => {
+        updateProfile(currentUser, {
+            displayName: name, photoURL: photo
+        })
     }
     return (
         <Container>
@@ -50,8 +77,8 @@ const Register = () => {
 
                         <p className='text-center fs-6'><small>Already have an account ?<Link
                             to='/Login' className='text-blue fw-bold'>Login</Link></small></p>
-                        <p className='text-center '><small className='text-success'>{[]}</small></p>
-                        <p className='text-center '><small className='text-danger'>{[]}</small></p>
+                        <p className='text-center '><small className='text-success'>{success}</small></p>
+                        <p className='text-center '><small className='text-danger'>{error}</small></p>
 
                     </Form>
                     <hr className=' border border-2 border-black  mx-4' />

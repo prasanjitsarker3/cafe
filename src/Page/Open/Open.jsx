@@ -6,7 +6,7 @@ import { FaUtensils } from 'react-icons/fa';
 const Open = () => {
     return (
         <Container className='backGround py-5 d-flex justify-content-center align-items-center mx-auto mt-3'>
-            <div className='w-50 mx-auto border p-3 py-4 rounded'>
+            <div className='w-75 mx-auto border p-3 py-4 rounded'>
                 <h2 className='bg-black text-white text-center py-3 fs-3 rounded-5'>RESERVATIONS</h2>
                 <h2 className='fs-4 text-center py-1'>Opening Times  <FaUtensils></FaUtensils></h2>
                 <div className='d-flex justify-content-between fs-5 fw-semibold'>

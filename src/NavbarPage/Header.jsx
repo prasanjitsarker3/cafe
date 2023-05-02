@@ -9,7 +9,14 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
 
 const Header = () => {
-    const {user}=useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext);
+    const handleSignOut = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
     return (
         <div>
             <Navbar bg="light" expand="lg">
@@ -26,7 +33,13 @@ const Header = () => {
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/about" >About</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="">Blog</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link>
-                            <p>{user.name}</p>
+                            {
+                                user && <img src={user?.photoURL} className='rounded-circle' width={'30px'} height={'30px'} alt="" srcset="" />
+                            }
+                            {
+                                user ? <Button onClick={handleSignOut} variant='success'>Logout</Button> :
+                                    <Button variant='success'>Login </Button>
+                            }
                         </Nav>
 
                     </Navbar.Collapse>
