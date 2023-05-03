@@ -11,7 +11,7 @@ const Main = () => {
             <ToastContainer></ToastContainer>
             <Header></Header>
             <Outlet></Outlet>
-            <Footer></Footer>
+            <Footer></Footer> 
         </div>
     );
 };

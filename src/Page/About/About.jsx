@@ -6,9 +6,12 @@ import hot4 from '../../../public/Image/hot4.avif'
 import { Col, Container, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image';
 import Open from '../Open/Open';
+import RecipeInfo from '../../ShearPage/RecipeInfo';
+
 const About = () => {
     return (
         <Container>
+
             <div className='text-center text-warning pt-5'>
                 <h1>HOT SALES !</h1>
             </div>
@@ -47,6 +50,9 @@ const About = () => {
                 </Col>
 
             </Row>
+            <div>
+                <RecipeInfo></RecipeInfo>
+            </div>
             <div>
                 <Open></Open>
             </div>

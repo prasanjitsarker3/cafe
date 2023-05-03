@@ -7,6 +7,7 @@ import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
 import PrivateRoute from "./PrivateRoute";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import Blog from "../Page/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
             {
                 path: "register",
                 element: <Register></Register>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
             ,
             {

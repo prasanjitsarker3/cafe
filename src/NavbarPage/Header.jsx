@@ -36,7 +36,7 @@ const Header = () => {
                         >
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/" >Home</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/about" >About</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="">Blog</Link>
+                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/blog">Blog</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link>
                             {
                                 user && <div>
