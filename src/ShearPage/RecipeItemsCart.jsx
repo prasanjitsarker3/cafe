@@ -12,7 +12,7 @@ const RecipeItemsCart = ({ recipe }) => {
     const [favorite, setFavorite] = useState(false);
     const { name, image, experience, numberRecipe, like, view, years, id, method, rating, leastRecipe, ingrediants } = recipe;
     const handleClick = () => {
-        toast.success("Hello")
+        toast.success("Add Your Favorite Recipe")
         setFavorite(true)
     }
     return (
@@ -31,10 +31,11 @@ const RecipeItemsCart = ({ recipe }) => {
                             value={rating}
                             readOnly
                         />
-                        {/* <Button disable={!favorite} onClick={handleClick}>
+                        {/* <Button  disabled={favorite} onClick={handleClick}>
                             <p>FAV</p>
                         </Button> */}
-                        <p onClick={handleClick} style={{ fontSize: '30px' }}><FaHeart disable={!favorite}/></p>
+                        <p ></p>
+                        <Button onClick={handleClick} disabled={favorite} style={{ fontSize: '10px' }}><FaHeart  /></Button>
 
                     </div>
                 </Card.Body>

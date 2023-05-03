@@ -7,7 +7,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../Authentication/AuthProvider';
-import { NavLink } from 'react-bootstrap';
+import { NavLink } from "react-router-dom";
 import "react-tooltip/dist/react-tooltip.css";
 // import "./styles.css";
 import { Tooltip as ReactTooltip } from "react-tooltip";
@@ -30,14 +30,19 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
-                            className="ms-auto my-2 my-lg-0 d-flex justify-content-center align-content-center py-1 gap-3"
+                            className="ms-auto my-2 my-lg-0 d-flex justify-content-center align-content-center py-1 gap-3 nav-bar text-decoration-none"
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/" >Home</Link>
+                            <NavLink to="/" className="text-decoration-none fs-6 fw-semibold" >Home</NavLink>
+                            <NavLink to="/about" className="text-decoration-none fs-6 fw-semibold">About</NavLink>
+                            <NavLink to="/blog" className="text-decoration-none fs-6 fw-semibold" >Blog</NavLink>
+                            <NavLink to="/Login" className="text-decoration-none fs-6 fw-semibold">Login</NavLink>
+
+                            {/* <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/" >Home</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/about" >About</Link>
                             <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/blog">Blog</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link>
+                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link> */}
                             {
                                 user && <div>
                                     <img id="title" src={user?.photoURL} className='rounded-circle' width={'30px'} height={'30px'} alt="" srcset="" />

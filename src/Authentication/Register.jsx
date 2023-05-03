@@ -5,7 +5,7 @@ import { AuthContext } from './AuthProvider';
 import { updateProfile } from 'firebase/auth';
 
 const Register = () => {
-    const { userCreate } = useContext(AuthContext);
+    const { userCreate, logOut } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
@@ -34,7 +34,8 @@ const Register = () => {
                 setError('');
                 setSuccess("Successfully User");
                 form.reset();
-                navigate('/');
+                logOut();
+                navigate('/login');
 
             })
             .catch(error => {
