@@ -12,20 +12,22 @@ const ChefRecipe = () => {
 
             <Row>
                 <Col className='d-flex justify-content-center align-items-center'>
-                    <div className='text-center'>
-                        <img src={image} alt="" height={'200px'} width={'400px'} srcset="" />
-                        <h1 className='fs-3 text-success'>{name}</h1>
-                        <p className='fw-bold'>Recipe Name: {chef.authorRecipe[2].name}</p>
+                    <Row className='text-center border m-2 d-flex justify-content-between'>
+                        <Col lg={6} xs={12} className='p-2 '>
+                            <img src={image} alt="" height={'200px'} width={'380px'} srcset="" />
+                        </Col>
+                        <Col lg={6} xs={12} className='p-2 '>
+                            <h1 className='fs-3 text-success'>{name}</h1>
+                            <p className='fw-bold'>Recipe Name: {chef.authorRecipe[1].name}</p>
 
-                        <div>
-                            <p>{years}  Years Of Experience</p>
-                            <p>{like} People Like Recipe</p>
-                        </div>
-
-                    </div>
-
+                            <div>
+                                <p>{years}  Years Of Experience</p>
+                                <p>{like} People Like Recipe</p>
+                            </div>
+                        </Col>
+                    </Row>
                 </Col>
-                <p className='fs-wrap text-center'>{experience}</p>
+                <p className='fs-wrap text-center py-2'>{experience}</p>
             </Row>
             <Row>
                 <Col>
