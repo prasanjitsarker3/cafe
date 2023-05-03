@@ -3,9 +3,10 @@ import { Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import { updateProfile } from 'firebase/auth';
+import { FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 
 const Register = () => {
-    const { userCreate, logOut } = useContext(AuthContext);
+    const { userCreate, logOut, signWithGoogle, signWithGithub } = useContext(AuthContext);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
     const navigate = useNavigate();
@@ -49,11 +50,39 @@ const Register = () => {
             displayName: name, photoURL: photo
         })
     }
+    const handleGoogleSignUp = () => {
+        signWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('')
+                setSuccess("Successfully Login");
+                navigate('/')
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
+    const handleGithubSignUp = () => {
+        signWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('');
+                setSuccess('Successfully Login');
+                navigate('/');
+
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
     return (
         <Container>
-            <Row className='d-flex justify-content-center mt-4'>
+            <Row className='d-flex justify-content-center mt-4 pb-3'>
                 <Col lg={4} md={6} xs={12} >
                     <Form onSubmit={handleCreateSignUp} className='text-black fs-6 border px-4 py-4'>
+                    <p className='text-center fs-5 m-0 text-success'>Please Registration !</p>
                         <Form.Group
                             className="mb-1" controlId="formGroupEmail">
                             <Form.Label className='fs-6'>Name </Form.Label>
@@ -71,27 +100,26 @@ const Register = () => {
                         <Form.Group
                             className="mb-2" controlId="formGroupEmail">
                             <Form.Label >Photo </Form.Label>
-                            <Form.Control type="text" name='photo' required placeholder="Upload Photo" />
+                            <Form.Control type="photo" name='photo' required placeholder="Upload Photo" />
                         </Form.Group>
                         <div className='d-flex justify-content-center'>
                             <input className='w-75 bg-warning border-0 p-1 rounded text-white fw-bold fs-6' type="submit" value="Sign Up" />
                         </div>
 
-                        <p className='text-center fs-6'><small>Already have an account ?<Link
+                        <p className='text-center fs-6 pb-0'><small>Already have an account ?<Link
                             to='/Login' className='text-blue fw-bold'>Login</Link></small></p>
                         <p className='text-center '><small className='text-success'>{success}</small></p>
                         <p className='text-center '><small className='text-danger'>{error}</small></p>
+                        <p className='text-center m-0 p-0'>Registration With</p>
+                        <div className='d-flex justify-content-center gap-3 '>
+                            <FaGoogle onClick={handleGoogleSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
+                            <FaTwitter style={{ fontSize: '30px' }} />
+                            <FaGithub onClick={handleGithubSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
+                        </div>
 
                     </Form>
-                    <hr className=' border border-2 border-black  mx-4' />
-                    {/* <div className='d-flex  gap-2 justify-content-center align-items-center border rounded-4 mx-2 mb-1'>
-                <img src={facebook} alt="" width={"35px"} srcset="" />
-                <p className='fs-5 text-white  pt-2'>Continue With Facebook</p>
-            </div>
-            <div className='d-flex  gap-2 justify-content-center align-items-center border rounded-4 mx-2 p'>
-                <img src={google} alt="" width={"33px"} srcset="" />
-                <p className='fs-5 text-white  pt-2'>Continue With Facebook</p>
-            </div> */}
+
+
 
                 </Col>
             </Row>

@@ -12,7 +12,7 @@ const Home = () => {
         return <Spinner animation="border" />
     }
     useEffect(() => {
-        fetch('http://localhost:5000/restaurants')
+        fetch('https://chilekota-server-site-prasanjitsarker3.vercel.app/restaurants')
             .then(res => res.json())
             .then(data => setRestaurant(data))
     }, [])

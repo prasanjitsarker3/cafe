@@ -31,11 +31,7 @@ const RecipeItemsCart = ({ recipe }) => {
                             value={rating}
                             readOnly
                         />
-                        {/* <Button  disabled={favorite} onClick={handleClick}>
-                            <p>FAV</p>
-                        </Button> */}
-                        <p ></p>
-                        <Button onClick={handleClick} disabled={favorite} style={{ fontSize: '10px' }}><FaHeart  /></Button>
+                        <Button onClick={handleClick} disabled={favorite} style={{ fontSize: '10px' }}><FaHeart /></Button>
 
                     </div>
                 </Card.Body>

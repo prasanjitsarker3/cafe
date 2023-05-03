@@ -10,13 +10,13 @@ const Footer = () => {
             </div>
             <Row className='text-center py-4 px-4'>
                 <Col lg={4} md={6} xs={12} className=''>
-                    <h1>About</h1>
+                    <h1 className='fs-3'>About</h1>
                     <p>A restaurant is a business that prepares and serves food and drinks to customers.Meals are
                         generally served and eaten on the premises, but many restaurants also offer take-out and food delivery services.</p>
                     <Button variant="outline-warning " className='text-white'>By This Delicious Theme</Button>
                 </Col>
                 <Col lg={4} md={6} xs={12}>
-                    <h1>Get news & offers</h1>
+                    <h1 className='fs-3'>Get news & offers</h1>
                     <div className='d-flex justify-content-center gap-3'>
                         <input className='rounded-2 border-none p-2' type="email" name="" id="" placeholder='Enter Mail' />
                         <input className='rounded-2 p-2 border none' type="submit" value="Subscribe" />
@@ -32,11 +32,11 @@ const Footer = () => {
                     </div>
                 </Col>
                 <Col lg={4} md={6} xs={12}>
-                    <h1 className='fs-2'>Contact</h1>
-                    <p className='fs-5'>Via Stella,22</p>
-                    <h3 className='fs-5'>Modena MO, India</h3>
-                    <p className='fs-5'>+390 59 223 912</p>
-                    <h2 className='fs-4'>chilekota123@gmail.com</h2>
+                    <h1 className='fs-3'>Contact</h1>
+                    <p className='fs-6'>Via Stella,22</p>
+                    <h3 className='fs-6'>Modena MO, India</h3>
+                    <p className='fs-6'>+390 59 223 912</p>
+                    <h className='fs-6'>chilekota123@gmail.com</h>
                 </Col>
 
             </Row>

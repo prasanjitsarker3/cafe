@@ -26,7 +26,7 @@ const Blog = () => {
                     </div>
 
                 </Col>
-               
+
             </Row>
             <Row ref={ref}>
                 <Col lg={6} xs={12} className='d-flex justify-content-center align-items-center mx-auto m-2 '>

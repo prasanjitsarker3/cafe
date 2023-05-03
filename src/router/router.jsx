@@ -39,7 +39,7 @@ const router = createBrowserRouter([
             {
                 path: 'chef/:id',
                 element: <PrivateRoute><ChefRecipe></ChefRecipe></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/restaurants/${params.id}`)
+                loader: ({ params }) => fetch(`https://chilekota-server-site-prasanjitsarker3.vercel.app/restaurants/${params.id}`)
             }
         ]
     }

@@ -7,7 +7,7 @@ import { FaTwitter, FaGoogle, FaGithub } from "react-icons/fa";
 const Login = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const { userLogin, signWithGoogle } = useContext(AuthContext);
+    const { userLogin, signWithGoogle, signWithGithub } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
     const from = location?.state?.from?.pathname || '/'
@@ -51,9 +51,23 @@ const Login = () => {
                 setError(error.message)
             })
     }
+    const handleGithubSignUp = () => {
+        signWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser);
+                setError('');
+                setSuccess('Successfully Login');
+                navigate(from, { replace: true });
+
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
     return (
         <Container>
-            <Row className='d-flex justify-content-center mt-4'>
+            <Row className='d-flex justify-content-center mt-4 pb-4'>
                 <Col lg={4} md={6} xs={12} >
                     <Form onSubmit={handleLoginUser} className='text-black fs-6 border px-4 py-4'>
                         <p className='text-center fs-5 m-0 text-success'>Please Login !</p>
@@ -75,14 +89,14 @@ const Login = () => {
                         <p className='text-center '><small className='text-success'>{success}</small></p>
                         <p className='text-center '><small className='text-danger'>{error}</small></p>
                         <p className='text-center '>Login With</p>
-                        <div className='d-flex justify-content-center gap-3 pb-3'>
+                        <div className='d-flex justify-content-center gap-3'>
                             <FaGoogle onClick={handleGoogleSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
                             <FaTwitter style={{ fontSize: '30px' }} />
-                            <FaGithub style={{ fontSize: '30px' }} />
+                            <FaGithub onClick={handleGithubSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
                         </div>
                     </Form>
-                    <hr className=' border border-2 border-black  mx-4' />
                     
+
 
 
                 </Col>

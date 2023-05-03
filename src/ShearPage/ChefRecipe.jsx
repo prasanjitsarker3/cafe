@@ -9,7 +9,7 @@ const ChefRecipe = () => {
     // const authorRecipe = chef;
     return (
         <Container className='mt-5'>
-
+ 
             <Row>
                 <Col className='d-flex justify-content-center align-items-center'>
                     <Row className='text-center border m-2 d-flex justify-content-between'>

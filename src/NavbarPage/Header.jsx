@@ -24,9 +24,9 @@ const Header = () => {
 
     return (
         <div>
-            <Navbar bg="light" expand="lg">
+            <Navbar bg="light" expand="lg" >
                 <Container >
-                    <Navbar.Brand href="#" className='text-success fw-bold fw-bold ' ><Link to='/' className='text-decoration-none text-success fs-4'>ChileKota</Link></Navbar.Brand>
+                    <Navbar.Brand href="#" className='text-success fw-bold fw-bold ' ><Link to='/' className='text-decoration-none text-success fs-4 '>ChileKota</Link></Navbar.Brand>
                     <Navbar.Toggle aria-controls="navbarScroll" />
                     <Navbar.Collapse id="navbarScroll">
                         <Nav
@@ -37,12 +37,7 @@ const Header = () => {
                             <NavLink to="/" className="text-decoration-none fs-6 fw-semibold" >Home</NavLink>
                             <NavLink to="/about" className="text-decoration-none fs-6 fw-semibold">About</NavLink>
                             <NavLink to="/blog" className="text-decoration-none fs-6 fw-semibold" >Blog</NavLink>
-                            <NavLink to="/Login" className="text-decoration-none fs-6 fw-semibold">Login</NavLink>
 
-                            {/* <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/" >Home</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/about" >About</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/blog">Blog</Link>
-                            <Link className='fs-6 text-decoration-none fw-semibold text-black' to="/login">Login</Link> */}
                             {
                                 user && <div>
                                     <img id="title" src={user?.photoURL} className='rounded-circle' width={'30px'} height={'30px'} alt="" srcset="" />
@@ -51,7 +46,7 @@ const Header = () => {
                             }
                             {
                                 user ? <Button onClick={handleSignOut} variant='success'>Logout</Button> :
-                                    <Button variant='success'>Login </Button>
+                                    <NavLink to="/Login" className="text-decoration-none fs-6 fw-semibold">Login</NavLink>
                             }
                         </Nav>
 
