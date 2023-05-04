@@ -18,8 +18,8 @@ const Blog = () => {
                     </div>
                 </Col>
                 <Col className='d-flex justify-content-center align-items-center pt-3'>
-                    <div>
-                        <Pdf targetRef={ref} filename="code-example.pdf">
+                    <div className=''>
+                        <Pdf targetRef={ref}  filename="code-example.pdf">
                             {({ toPdf }) => <Button onClick={toPdf} variant="outline-success">Download PDF <FaDownload /></Button>}
                         </Pdf>
 
@@ -28,7 +28,7 @@ const Blog = () => {
                 </Col>
 
             </Row>
-            <Row ref={ref}>
+            <Row ref={ref} >
                 <Col lg={6} xs={12} className='d-flex justify-content-center align-items-center mx-auto m-2 '>
                     <div className='border p-2 mt-4'>
                         <p className='fs-4 fw-brighter'>Tell us the differences between uncontrolled and controlled components?</p>

@@ -18,7 +18,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         if (!/(?=.*[0-9].*[0-9])/.test(password)) {
-            return setError(" Ensure string has two digits")
+            return setError(" Ensure string has two digits");
         }
         else if (password.length < 6) {
             return setError("Ensure Password length is 6");
@@ -95,7 +95,7 @@ const Login = () => {
                             <FaGithub onClick={handleGithubSignUp} style={{ fontSize: '30px', cursor: 'pointer' }} />
                         </div>
                     </Form>
-                    
+
 
 
 

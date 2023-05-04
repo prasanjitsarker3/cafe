@@ -7,16 +7,18 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const Home = () => {
     const [restaurant, setRestaurant] = useState([]);
-    const navigation = useNavigate();
-    if (navigation.state === 'loading') {
-        return <Spinner animation="border" />
-    }
+    const [dataLoader, setDataLoader] = useState(true);
     useEffect(() => {
         fetch('https://chilekota-server-site-prasanjitsarker3.vercel.app/restaurants')
             .then(res => res.json())
             .then(data => setRestaurant(data))
+        setDataLoader(false)
     }, [])
-
+    if (dataLoader) {
+        return <div className='d-flex justify-content-center align-items-center py-1'>
+            <Spinner animation="border" />
+        </div>
+    }
     return (
         <Container>
             <div className='mb-5'><Banner></Banner></div>
