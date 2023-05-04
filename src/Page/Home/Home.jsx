@@ -23,7 +23,7 @@ const Home = () => {
         <Container>
             <div className='mb-5'><Banner></Banner></div>
             <div className='text-center'>
-                <h1 className='mt-5 fs-3 pt-5 text-center text-success'>Our Master Chef</h1>
+                <h1 className='mt-5 fs-3 pt-5 text-center text-success'>Meet Our Master Chef</h1>
                 <p className='py-2 fs-5 pb-5'>Your diet is a bank account. Good food choices are good investments</p>
             </div>
             <div className='row g-3 mx-auto'>
